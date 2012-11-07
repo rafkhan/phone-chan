@@ -1,5 +1,7 @@
 (function(pchan, undefined) {
 
+	var storage = window.localStorage;
+
 	/*
 	 * Params:
 	 * 	url: pretty obvious
@@ -18,7 +20,8 @@
 						error_func.call(undefined, {
 							name: "Request Error",
 							message: "Oops! Something unexpected went\
-												wrong while making your request"
+												wrong while making your request.\nResp: "
+							          + xhr.responseText + "\nStatus: " + xhr.status
 						});
 					}
 				} else if(xhr.status == 404) { //404 error, not found
@@ -30,7 +33,8 @@
 					error_func.call(undefined, {
 						name: "Request Error",
 						message: "Oops! Something unexpected went\
-											wrong while making your request"
+											wrong while making your request.\nStatus: "
+						          + xhr.status
 					});
 				}
 			}
@@ -39,19 +43,62 @@
 		xhr.send();
 	}
 
+	/*
+	 * Downloads board, given the board code
+	 * and page #. sets callbacks to print
+	 * out board
+	 */
 	pchan.get_board = function(board, page) {
 		url = "http://api.4chan.org/" + board + 
 			    "/" + page + ".json";
 		ajax_request(url, 
 			function(board_obj) {
-				//Handle success
-				//Draw to screen, etc.
+				pchan.print_iterator(board_obj);
 			},
 
 			function(exception) {
 				//Handle errors
+				alert(exception.name + ": " + exception.message);
 			}
 		);
+	}
+
+	/*
+	 * Iterate over object and print out
+	 * post content to the screen
+	 */
+	function print_iterator(obj) {
+
+	}
+
+	/*
+	 * Implement public methods from localStorage
+	 * so the storage variable is not in
+	 * global scope.
+	 */
+	// Set item in local storage, by key and value
+	pchan.set_item = function(key, val) {
+		storage.setItem(key, val);
+	}
+
+	// Retrieve value at key
+	pchan.get_item = function(key) {
+		return storage.getItem(key);
+	}
+
+	// Remove item at key
+	pchan.remove_item = function(key) {
+		storage.removeItem(key);
+	}
+
+	// Remove all items from storage
+	pchan.clear_storage = function() {
+		storage.clear();
+	}
+
+	// Wrapper around ondeviceready
+	pchan.device_ready = function(func) {
+		document.addEventListener("deviceready", func, false);
 	}
 
 }(window.pchan = window.pchan || {}));

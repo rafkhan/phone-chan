@@ -5,10 +5,17 @@
 		<script src='js/cordova-2.1.0.js'></script>
 		<script src='js/mustache.js'></script>
 		<script src='js/phone-chan.js'></script>
+		<script>
+			pchan.device_ready(function() {	
+				board = pchan.get_item("board");
+				alert(board);
+				pchan.remove_item("board");
+				pchan.get_board(board, 0);
+			});
+		</script>
 	</head>
 	<body>
-		<a href='board.html'
-			onclick='pchan.set_item("board","g");'>Hello, world!</a>
+		<a href='#'>Goodbye, world!</a>
 		<br />
 	</body>
 </html>
