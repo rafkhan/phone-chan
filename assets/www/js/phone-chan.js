@@ -53,7 +53,7 @@
 			    "/" + page + ".json";
 		ajax_request(url, 
 			function(board_obj) {
-				pchan.print_iterator(board_obj);
+				print_board(board_obj);
 			},
 
 			function(exception) {
@@ -67,8 +67,18 @@
 	 * Iterate over object and print out
 	 * post content to the screen
 	 */
-	function print_iterator(obj) {
+	function print_board(obj) {
+		cont = $('#content');
 
+		threads = obj.threads;
+		for(a = 0; a < threads.length; a++) {
+			posts = threads[a].posts;
+			for(b = 0; b < posts.length; b++) {
+				post = posts[b];
+				cont.append(post.no + '<br />');
+			}
+			cont.append('<hr />');
+		}
 	}
 
 	/*
