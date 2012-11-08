@@ -1,3 +1,7 @@
+/*
+ *
+ *
+ */
 (function(pchan, undefined) {
 
 	var storage = window.localStorage;
@@ -46,7 +50,7 @@
 	/*
 	 * Downloads board, given the board code
 	 * and page #. sets callbacks to print
-	 * out board
+	 * out board.
 	 */
 	pchan.get_board = function(board, page) {
 		url = "http://api.4chan.org/" + board + 
@@ -64,8 +68,27 @@
 	}
 
 	/*
+	 * Dowloads thread, given board, and
+	 * thread #.Sets callbacks to print thread.
+	 */
+	pchan.get_thread = function(board, t_id) {
+		url = "http://api.4chan.org/" + board +
+			    "/res/" + t_id + ".json";
+		ajax_request(url,
+			function(thread_obj) {
+				print_thread(thread_obj);
+			},
+
+			function(exception) {
+				//Handle errors
+				alert(exception.name + ": " + exception.message);
+			}
+		);
+	}
+
+	/*
 	 * Iterate over object and print out
-	 * post content to the screen
+	 * post content to the screen.
 	 */
 	function print_board(obj) {
 		cont = $('#content');
@@ -79,6 +102,16 @@
 			}
 			cont.append('<hr />');
 		}
+	}
+
+	/*
+	 * TODO: This.
+	 *
+	 * Iterate over thread obj and print
+	 * contents to screen.
+	 */
+	function print_thread(obj) {
+
 	}
 
 	/*
