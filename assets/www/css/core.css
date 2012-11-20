@@ -1,0 +1,43 @@
+body {
+	background-color: #EEF2FF;
+	margin: auto;
+	padding: 0;
+}
+
+.post_container {
+	background-color: #D6DAF0;
+	float: left;
+	width: 100%;
+}
+
+.header {
+	padding: 5px;
+}
+
+.header .name {
+	color: #527A51;
+}
+
+.message_container {
+	padding:5px;
+	padding-top: 0px;
+}
+
+.message_container img {
+	float: left;
+	width: 25%;
+	margin-right: 5px;
+}
+
+.message {
+	float: left;
+}
+
+.message .greentext {
+	color: #96AD62;
+}
+
+.message .ref {
+	color: #DC2226;
+}
+
