@@ -5,10 +5,51 @@
 		<script src='js/cordova-2.1.0.js'></script>
 		<script src='js/mustache.js'></script>
 		<script src='js/phone-chan.js'></script>
+		<style>
+			body {
+				background-color: #EEF2FF;
+				margin: 0;
+				padding: 0;
+			}
+
+			.post_container {
+				background-color: #D6DAF0;
+				padding: 2px;
+				width: 100%;
+			}
+
+			.header {
+				margin-bottom: 4px;
+			}
+
+			.header .name {
+				color: #527A51;
+			}
+
+			.message .greentext {
+				color: #96AD62;
+			}
+
+			.message .ref {
+				color: #DC2226;
+			}
+		</style>
 	</head>
 	<body>
 		<a href='board.html'
-			onclick='pchan.set_item("board","g");'>Hello, world!</a>
-		<br />
+			onclick='pchan.set_item("board","g");'>Matt sucks cock.</a>
+		<br /><br />
+
+		<div class='post_container'>
+			<div class='header'>
+				<span class='name'>Anonymous</span> 11/20/20120 9:25 No. 1234567<br />
+			</div>
+			<div class='message'>
+				<a href='#' class='ref'>&gt;&gt;12312451</a><br />
+				Butthurt aspie detected.<br />
+				<span class='greentext'>&gt;implying he can code</span>
+			</div>
+		</div>
+
 	</body>
 </html>

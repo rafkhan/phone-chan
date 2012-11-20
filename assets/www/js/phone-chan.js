@@ -121,13 +121,14 @@
 	 */
 	function print_board(obj) {
 		cont = $('#content');
-
 		threads = obj.threads;
 		for(a = 0; a < threads.length; a++) {
 			posts = threads[a].posts;
 			for(b = 0; b < posts.length; b++) {
 				post = posts[b];
-				cont.append(post.no + '<br />');
+				template = "<p>{{no}}</p>";
+				html = Mustache.render(template, post);
+				cont.append(html);
 			}
 			cont.append('<hr />');
 		}
@@ -141,6 +142,9 @@
 	 */
 	function print_thread(obj) {
 
+	}
+
+	function stache(html, obj) {
 	}
 
 	/*
