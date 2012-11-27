@@ -33,11 +33,11 @@ body {
 	float: left;
 }
 
-.message .greentext {
+.quote {
 	color: #96AD62;
 }
 
-.message .ref {
+.quotelink {
 	color: #DC2226;
 }
 

@@ -126,8 +126,7 @@
 			posts = threads[a].posts;
 			for(b = 0; b < posts.length; b++) {
 				post = posts[b];
-				template = "<p>{{no}}</p>";
-				html = Mustache.render(template, post);
+				html = Mustache.render(pchan.post_template, post);
 				cont.append(html);
 			}
 			cont.append('<hr />');
@@ -176,5 +175,18 @@
 	pchan.device_ready = function(func) {
 		document.addEventListener("deviceready", func, false);
 	}
+
+	pchan.post_template = "
+		<div class='post_container'>\
+			<div class='header'>\
+				<span class='name'>{{name}}</span>{{now}} No.{{no}}<br />\
+			</div>
+			<div class='message_container'>\
+				<a href='4chan.org/images/{{full}}'>\
+					<img src='4chan.org/images/{{thumb}}' />\
+				<div class='message'>\
+				</div>\
+			</div>\
+		</div>"
 
 }(window.pchan = window.pchan || {}));

@@ -11,8 +11,8 @@
 			pchan.device_ready(function() {	
 				board = pchan.get_item("board");
 				alert(board);
-				pchan.remove_item("board");
 				pchan.get_board(board, 0);
+				pchan.remove_item("board");
 			});
 		</script>
 	</head>
